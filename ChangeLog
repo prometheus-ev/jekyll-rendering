@@ -1,5 +1,12 @@
 = Revision history for jekyll-rendering
 
+== 0.0.2 [2010-07-01]
+
+* Refactoring and documentation.
+	* Introduced Jekyll::Engine::Erb::Helpers module
+	* Provide aliases to original methods
+* Credits.
+
 == 0.0.1 [2010-06-30]
 
 * Birthday :-)
