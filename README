@@ -16,6 +16,11 @@ Add the following to your <tt>_plugins/ext.rb</tt> file:
 Then set +engine+ in your <tt>_config.yml</tt>. The default engine is +liquid+.
 
 
+== TODO
+
+* Automatic engine detection by file extension? (<tt><NAME>.<FORMAT>.<ENGINE></tt>)
+
+
 == LINKS
 
 <b></b>
