@@ -212,14 +212,6 @@ module Jekyll
 
   end
 
-  class Page
-
-    def index?
-      basename == @site.config['paginate_file'].sub('.html', '')
-    end
-
-  end
-
   # Provide an engine-agnostic name for the hash representation.
   [Post, Page, Pager].each { |klass|
     klass.send(:alias_method, :to_hash, :to_liquid)
