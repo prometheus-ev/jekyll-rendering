@@ -11,7 +11,7 @@ Jekyll plugin to provide alternative rendering engines.
 
 Add the following to your <tt>_plugins/ext.rb</tt> file:
 
-  require 'jekyll-rendering'
+  require 'jekyll/rendering'
 
 Then set +engine+ in your <tt>_config.yml</tt>. The default engine is +liquid+.
 
