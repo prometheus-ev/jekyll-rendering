@@ -57,7 +57,7 @@ module Jekyll
 
       while layout = layouts[layout.data['layout']]
         payload = payload.deep_merge('content' => output, 'page' => layout.data)
-        self.output = engine.render(payload, content, info, layout.content)
+        self.output = engine.render(payload, output, info, layout.content)
       end
     end
 
