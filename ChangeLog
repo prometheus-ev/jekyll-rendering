@@ -1,5 +1,9 @@
 = Revision history for jekyll-rendering
 
+== 0.0.3 [2010-09-29]
+
+* Fixed nested layouts.
+
 == 0.0.2 [2010-07-01]
 
 * Refactoring and documentation.
