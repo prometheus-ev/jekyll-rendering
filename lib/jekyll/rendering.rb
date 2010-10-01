@@ -153,18 +153,22 @@ module Jekyll
 
         # call-seq:
         #   include_file file => aString
-        #   include_file file, binding => aString
         #
-        # Includes file +file+ from <tt>_includes</tt> directory rendered
-        # as ERB template. Uses optional +binding+ if provided.
-        def include_file(file, binding = binding)
-          Dir.chdir(File.join(site.source, '_includes')) {
-            @choices ||= Dir['**/*'].reject { |x| File.symlink?(x) }
+        # Includes file +file+ from <tt>_includes</tt> directory, or current
+        # directory if +current+ is true, rendered as ERB template. Uses
+        # optional +binding+ if provided.
+        def include_file(file, current = false, binding = binding)
+          dir = current ? File.dirname(page.url) : '_includes'
 
-            if @choices.include?(file = file.strip)
+          Dir.chdir(File.join(site.source, dir)) {
+            @choices ||= Hash.new { |h, k|
+              h[k] = Dir['**/*'].reject { |x| File.symlink?(x) }
+            }
+
+            if @choices[dir].include?(file = file.strip)
               render(File.read(file), binding)
             else
-              "Included file '#{file}' not found in _includes directory"
+              "[Included file `#{file}' not found in `#{dir}'.]"
             end
           }
         end
