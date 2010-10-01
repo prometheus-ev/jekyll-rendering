@@ -2,11 +2,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{jekyll-rendering}
-  s.version = "0.0.3"
+  s.version = "0.0.4"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Jens Wille"]
-  s.date = %q{2010-09-29}
+  s.date = %q{2010-10-01}
   s.description = %q{Jekyll plugin to provide alternative rendering engines.}
   s.email = %q{jens.wille@uni-koeln.de}
   s.extra_rdoc_files = ["COPYING", "ChangeLog", "README"]

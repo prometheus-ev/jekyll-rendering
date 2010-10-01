@@ -1,5 +1,9 @@
 = Revision history for jekyll-rendering
 
+== 0.0.4 [2010-10-01]
+
+* Allow inclusion of files from *current* directory.
+
 == 0.0.3 [2010-09-29]
 
 * Fixed nested layouts.
