@@ -141,36 +141,39 @@ module Jekyll
       # call-seq:
       #   engine.render => aString
       #   engine.render(content) => aString
-      #   engine.render(content, binding) => aString
+      #   engine.render(content, local_assigns) => aString
       #
-      # Renders the +content+ as ERB template. Uses optional +binding+
-      # if provided.
-      def render(content = content, binding = binding)
-        ::ERB.new(content).result(binding)
+      # Renders the +content+ as ERB template. Assigns optional
+      # +local_assigns+ for use in template if provided.
+      def render(content = content, local_assigns = {})
+        assigns = '<% ' << local_assigns.keys.map { |var|
+          "#{var} = local_assigns[#{var.inspect}]"
+        }.join("\n") << " %>\n" unless local_assigns.empty?
+
+        ::ERB.new("#{assigns}#{content}").result(binding)
       end
 
       module Helpers
 
         # call-seq:
         #   include_file file => aString
+        #   include_file file, local_assigns => aString
         #
         # Includes file +file+ from <tt>_includes</tt> directory, or current
-        # directory if +current+ is true, rendered as ERB template. Uses
-        # optional +binding+ if provided.
-        def include_file(file, current = false, binding = binding)
-          dir = current ? File.dirname(page.url) : '_includes'
-
-          Dir.chdir(File.join(site.source, dir)) {
-            @choices ||= Hash.new { |h, k|
-              h[k] = Dir['**/*'].reject { |x| File.symlink?(x) }
-            }
-
-            if @choices[dir].include?(file = file.strip)
-              render(File.read(file), binding)
-            else
-              "[Included file `#{file}' not found in `#{dir}'.]"
-            end
+        # directory if +file+ starts with <tt>./</tt>, rendered as ERB template.
+        # Passes optional +local_assigns+ on to #render.
+        def include_file(file, local_assigns = {})
+          @templates ||= Hash.new { |h, k|
+            h[k] = File.readable?(k) && File.read(k)
           }
+
+          dir = file =~ /\A\.\// ? File.dirname(page.url) : '_includes'
+
+          if template = @templates[File.join(site.source, dir, file)]
+            render(template, local_assigns)
+          else
+            "[Included file `#{file}' not found in `#{dir}'.]"
+          end
         end
 
         # call-seq:
