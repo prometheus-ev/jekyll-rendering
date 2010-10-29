@@ -1,5 +1,11 @@
 = Revision history for jekyll-rendering
 
+== 0.0.5 [2010-10-29]
+
+* Refactored include_file.
+  * Accept hash of local assigns instead of binding.
+  * Denote inclusion from current directory by './'.
+
 == 0.0.4 [2010-10-01]
 
 * Allow inclusion of files from *current* directory.
