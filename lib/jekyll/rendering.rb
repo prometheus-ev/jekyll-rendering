@@ -46,7 +46,7 @@ module Jekyll
       payload['pygments_suffix'] = converter.pygments_suffix
 
       # render and transform content (this becomes the final content of the object)
-      self.content = engine.render(payload, content, info)
+      self.content = engine.render(payload, content, info, data)
       transform
 
       # output keeps track of what will finally be written
@@ -57,7 +57,7 @@ module Jekyll
 
       while layout = layouts[layout.data['layout']]
         payload = payload.deep_merge('content' => output, 'page' => layout.data)
-        self.output = engine.render(payload, output, info, layout.content)
+        self.output = engine.render(payload, output, info, data, layout.content)
       end
     end
 
@@ -88,15 +88,15 @@ module Jekyll
       #   Engine::Base.render(*args)
       #
       # Renders the output. Defers to engine's render method.
-      def self.render(payload, content, info, layout = nil)
-        new(payload, content, info).render(layout || content)
+      def self.render(payload, content, info, data = {}, layout = nil)
+        new(payload, content, info, data).render(layout || content)
       end
 
-      attr_reader   :payload, :info
+      attr_reader   :payload, :info, :data
       attr_accessor :content
 
-      def initialize(payload, content = nil, info = {})
-        @payload, @content, @info = payload, content, info
+      def initialize(payload, content = nil, info = {}, data = {})
+        @payload, @content, @info, @data = payload, content, info, data
       end
 
       # call-seq:
@@ -105,6 +105,11 @@ module Jekyll
       # Renders the output. Must be implemented by subclass.
       def render
         raise NotImplementedError
+      end
+
+      def render_error(err)
+        name = self.class.name.split('::').last
+        warn "#{name} Exception: #{err} (in #{data['layout'] || '(top)'})"
       end
 
     end
@@ -119,6 +124,8 @@ module Jekyll
       # calling ::Liquid::Template#render with +payload+ and +info+.
       def render(content = content)
         ::Liquid::Template.parse(content).render(payload, info)
+      rescue => err
+        render_error(err)
       end
 
     end
@@ -151,6 +158,8 @@ module Jekyll
         }.join("\n") << " %>\n" unless local_assigns.empty?
 
         ::ERB.new("#{assigns}#{content}").result(binding)
+      rescue => err
+        render_error(err)
       end
 
       module Helpers
