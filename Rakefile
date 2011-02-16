@@ -1,23 +1,20 @@
-require %q{lib/jekyll/rendering/version}
+require File.expand_path(%q{../lib/jekyll/rendering/version}, __FILE__)
 
 begin
   require 'hen'
 
   Hen.lay! {{
     :gem => {
-      :name         => %q{jekyll-rendering},
-      :version      => Jekyll::Rendering::VERSION,
-      :summary      => %q{Jekyll plugin to provide alternative rendering engines.},
-      :files        => FileList['lib/**/*.rb'].to_a,
-      :extra_files  => FileList['[A-Z]*'].to_a,
-      :dependencies => %w[]
+      :name    => %q{jekyll-rendering},
+      :version => Jekyll::Rendering::VERSION,
+      :summary => %q{Jekyll plugin to provide alternative rendering engines.},
+      :author  => %q{Jens Wille},
+      :email   => %q{jens.wille@uni-koeln.de}
     }
   }}
-rescue LoadError
-  warn "Please install the `hen' gem."
+rescue LoadError => err
+  warn "Please install the `hen' gem. (#{err})"
 end
-
-### Place your custom Rake tasks here.
 
 begin
   require 'jekyll/testtasks/rake'
