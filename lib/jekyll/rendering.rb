@@ -3,9 +3,9 @@
 #                                                                             #
 # jekyll-rendering -- Jekyll plugin to provide alternative rendering engines  #
 #                                                                             #
-# Copyright (C) 2010 University of Cologne,                                   #
-#                    Albertus-Magnus-Platz,                                   #
-#                    50923 Cologne, Germany                                   #
+# Copyright (C) 2010-2011 University of Cologne,                              #
+#                         Albertus-Magnus-Platz,                              #
+#                         50923 Cologne, Germany                              #
 #                                                                             #
 # Authors:                                                                    #
 #     Jens Wille <jens.wille@uni-koeln.de>                                    #
@@ -32,6 +32,10 @@ require 'ostruct'
 module Jekyll
 
   module Rendering
+
+    # Options passed to ERB.new: +safe_level+, +trim_mode+, +eoutvar+.
+    ERB_OPTIONS = [nil, nil, '_erbout' ]
+
   end
 
   module Convertible
@@ -157,7 +161,7 @@ module Jekyll
           "#{var} = local_assigns[#{var.inspect}]"
         }.join("\n") << " %>\n" unless local_assigns.empty?
 
-        ::ERB.new("#{assigns}#{content}").result(binding)
+        ERB.new("#{assigns}#{content}", *Rendering::ERB_OPTIONS).result(binding)
       rescue => err
         render_error(err)
       end

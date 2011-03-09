@@ -15,6 +15,9 @@ Add the following to your <tt>_plugins/ext.rb</tt> file:
 
 Then set +engine+ in your <tt>_config.yml</tt>. The default engine is +liquid+.
 
+Options passed to ERB.new are taken from <tt>Jekyll::Rendering::ERB_OPTIONS</tt>.
+Modify this array if you want to change defaults.
+
 
 == TODO
 
@@ -42,7 +45,7 @@ RubyGem::       <http://rubygems.org/gems/jekyll-rendering>
 
 == LICENSE AND COPYRIGHT
 
-Copyright (C) 2010 University of Cologne,
+Copyright (C) 2010-2011 University of Cologne,
 Albertus-Magnus-Platz, 50923 Cologne, Germany
 
 jekyll-rendering is free software: you can redistribute it and/or modify it under
