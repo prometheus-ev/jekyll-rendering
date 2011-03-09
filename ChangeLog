@@ -1,5 +1,10 @@
 = Revision history for jekyll-rendering
 
+== 0.0.6 [2011-03-09]
+
+* Defined Jekyll::Rendering::ERB_OPTIONS to allow
+  adjusting behaviour of ERB.new.
+
 == 0.0.5 [2010-10-29]
 
 * Refactored include_file.
