@@ -1,5 +1,9 @@
 = Revision history for jekyll-rendering
 
+== 0.0.7 [2011-03-31]
+
+* Include ERB::Util in Jekyll::Rendering::Erb::Helpers.
+
 == 0.0.6 [2011-03-09]
 
 * Defined Jekyll::Rendering::ERB_OPTIONS to allow
