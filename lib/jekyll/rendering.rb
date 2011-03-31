@@ -168,6 +168,8 @@ module Jekyll
 
       module Helpers
 
+        include ERB::Util
+
         # call-seq:
         #   include_file file => aString
         #   include_file file, local_assigns => aString
