@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>jekyll-rendering Application documentation (v0.0.8)</title>
+<title>ChangeLog - jekyll-rendering Application documentation (v0.0.8)</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
 
 
-<body>
+<body class="file">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -89,85 +89,64 @@
 
 <div id="documentation" class="description">
   
-<h1 id="label-jekyll-rendering+-+Jekyll+plugin+to+provide+alternative+rendering+engines.">jekyll-rendering - <a href="Jekyll.html">Jekyll</a> plugin to provide alternative rendering engines.</h1>
+<h1 id="label-Revision+history+for+jekyll-rendering">Revision history for jekyll-rendering</h1>
 
-<h2 id="label-VERSION">VERSION</h2>
+<h2 id="label-0.0.8+%5B2012-05-22%5D">0.0.8 [2012-05-22]</h2>
+<ul><li>
+<p>Added support for Erubis. (Used by default if available.)</p>
+</li><li>
+<p>Work around encoding issues on Ruby 1.9.</p>
+</li></ul>
 
-<p>This documentation refers to jekyll-rendering version 0.0.8</p>
+<h2 id="label-0.0.7+%5B2011-03-31%5D">0.0.7 [2011-03-31]</h2>
+<ul><li>
+<p>Include ERB::Util in Jekyll::Rendering::Erb::Helpers.</p>
+</li></ul>
 
-<h2 id="label-DESCRIPTION">DESCRIPTION</h2>
+<h2 id="label-0.0.6+%5B2011-03-09%5D">0.0.6 [2011-03-09]</h2>
+<ul><li>
+<p>Defined Jekyll::Rendering::ERB_OPTIONS to allow adjusting behaviour of
+ERB.new.</p>
+</li></ul>
 
-<p><a href="Jekyll.html">Jekyll</a> plugin to provide alternative rendering
-engines.</p>
+<h2 id="label-0.0.5+%5B2010-10-29%5D">0.0.5 [2010-10-29]</h2>
+<ul><li>
+<p>Refactored include_file.</p>
+<ul><li>
+<p>Accept hash of local assigns instead of binding.</p>
+</li><li>
+<p>Denote inclusion from current directory by ‘./’.</p>
+</li></ul>
+</li></ul>
 
-<p>Add the following to your <code>_plugins/ext.rb</code> file:</p>
+<h2 id="label-0.0.4+%5B2010-10-01%5D">0.0.4 [2010-10-01]</h2>
+<ul><li>
+<p>Allow inclusion of files from <strong>current</strong> directory.</p>
+</li></ul>
 
-<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'jekyll/rendering'</span>
+<h2 id="label-0.0.3+%5B2010-09-29%5D">0.0.3 [2010-09-29]</h2>
+<ul><li>
+<p>Fixed nested layouts.</p>
+</li></ul>
+
+<h2 id="label-0.0.2+%5B2010-07-01%5D">0.0.2 [2010-07-01]</h2>
+<ul><li>
+<p>Refactoring and documentation.</p>
+
+<pre class="ruby">* <span class="ruby-constant">Introduced</span> <span class="ruby-constant">Jekyll</span><span class="ruby-operator">::</span><span class="ruby-constant">Engine</span><span class="ruby-operator">::</span><span class="ruby-constant">Erb</span><span class="ruby-operator">::</span><span class="ruby-constant">Helpers</span> <span class="ruby-keyword">module</span>
+* <span class="ruby-constant">Provide</span> <span class="ruby-identifier">aliases</span> <span class="ruby-identifier">to</span> <span class="ruby-identifier">original</span> <span class="ruby-identifier">methods</span>
 </pre>
-
-<p>Then set <code>engine</code> in your <code>_config.yml</code>. The default
-engine is <code>liquid</code>.</p>
-
-<p>Options passed to ERB.new are taken from
-<code>Jekyll::Rendering::ERB_OPTIONS</code>. Modify this array if you want
-to change defaults.</p>
-
-<h2 id="label-TODO">TODO</h2>
-<ul><li>
-<p>Automatic engine detection by file extension?
-(<code>&lt;NAME&gt;.&lt;FORMAT&gt;.&lt;ENGINE&gt;</code>)</p>
+</li><li>
+<p>Credits.</p>
 </li></ul>
 
-<h2 id="label-LINKS">LINKS</h2>
-
-<p></p>
-<dl class="rdoc-list note-list"><dt>Documentation
-<dd>
-<p><a
-href="http://rdoc.info/projects/blackwinter/jekyll-rendering">rdoc.info/projects/blackwinter/jekyll-rendering</a></p>
-</dd><dt>Source code
-<dd>
-<p><a
-href="http://github.com/blackwinter/jekyll-rendering">github.com/blackwinter/jekyll-rendering</a></p>
-</dd><dt>RubyGem
-<dd>
-<p><a
-href="http://rubygems.org/gems/jekyll-rendering">rubygems.org/gems/jekyll-rendering</a></p>
-</dd></dl>
-
-<h2 id="label-AUTHORS">AUTHORS</h2>
+<h2 id="label-0.0.1+%5B2010-06-30%5D">0.0.1 [2010-06-30]</h2>
 <ul><li>
-<p>Jens Wille &lt;<a
-href="mailto:jens.wille@uni-koeln.de">jens.wille@uni-koeln.de</a>&gt;</p>
+<p>Birthday :-)</p>
 </li></ul>
-
-<h2 id="label-CREDITS">CREDITS</h2>
-<ul><li>
-<p>Arne Eilermann &lt;<a
-href="mailto:arne.eilermann@uni-koeln.de">arne.eilermann@uni-koeln.de</a>&gt;
-for the original idea and implementation.</p>
-</li></ul>
-
-<h2 id="label-LICENSE+AND+COPYRIGHT">LICENSE AND COPYRIGHT</h2>
-
-<p>Copyright (C) 2010-2012 University of Cologne, Albertus-Magnus-Platz, 50923
-Cologne, Germany</p>
-
-<p>jekyll-rendering is free software: you can redistribute it and/or modify it
-under the terms of the GNU Affero General Public License as published by
-the Free Software Foundation, either version 3 of the License, or (at your
-option) any later version.</p>
-
-<p>jekyll-rendering is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
-or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public
-License for more details.</p>
-
-<p>You should have received a copy of the GNU Affero General Public License
-along with jekyll-rendering. If not, see &lt;<a
-href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
 
 </div>
+
 
 
 <footer id="validator-badges">

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class Jekyll::Engine::Erb - jekyll-rendering Application documentation (v0.0.8)</title>
+
+<link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../../index.html">Home</a>
+    <a href="../../table_of_contents.html#classes">Classes</a>
+    <a href="../../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/jekyll/rendering.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Base.html">Jekyll::Engine::Base</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-_render">#_render</a>
+    
+    <li><a href="#method-i-_render_erb">#_render_erb</a>
+    
+    <li><a href="#method-i-render">#render</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../../COPYING.html">COPYING</a>
+  
+    <li class="file"><a href="../../ChangeLog.html">ChangeLog</a>
+  
+    <li class="file"><a href="../../README.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../../Jekyll.html">Jekyll</a>
+  
+    <li><a href="../../Jekyll/Convertible.html">Jekyll::Convertible</a>
+  
+    <li><a href="../../Jekyll/Engine.html">Jekyll::Engine</a>
+  
+    <li><a href="../../Jekyll/Engine/Base.html">Jekyll::Engine::Base</a>
+  
+    <li><a href="../../Jekyll/Engine/Erb.html">Jekyll::Engine::Erb</a>
+  
+    <li><a href="../../Jekyll/Engine/Erb/Helpers.html">Jekyll::Engine::Erb::Helpers</a>
+  
+    <li><a href="../../Jekyll/Engine/Liquid.html">Jekyll::Engine::Liquid</a>
+  
+    <li><a href="../../Jekyll/Rendering.html">Jekyll::Rendering</a>
+  
+    <li><a href="../../Jekyll/Rendering/Version.html">Jekyll::Rendering::Version</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class Jekyll::Engine::Erb</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-c-renderer" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">renderer</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-encoding" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">encoding</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-page" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">page</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-renderer" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">renderer</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-site" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">site</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">super</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-string">''</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:force_encoding</span>)
+    <span class="ruby-ivar">@encoding</span> = <span class="ruby-identifier">site</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:encoding</span>) <span class="ruby-operator">&amp;&amp;</span>
+      <span class="ruby-identifier">site</span>.<span class="ruby-identifier">encoding</span> <span class="ruby-operator">||</span> <span class="ruby-constant">Encoding</span>.<span class="ruby-identifier">default_external</span>
+
+    <span class="ruby-identifier">data</span>.<span class="ruby-identifier">each_value</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:force_encoding</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">val</span>.<span class="ruby-identifier">frozen?</span>
+        <span class="ruby-identifier">val</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-identifier">encoding</span>)
+      <span class="ruby-keyword">end</span>
+    }
+  <span class="ruby-keyword">end</span>
+
+  [<span class="ruby-constant">Helpers</span>, *<span class="ruby-identifier">info</span>[<span class="ruby-value">:filters</span>]].<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">mod</span><span class="ruby-operator">|</span> <span class="ruby-identifier">extend</span> <span class="ruby-identifier">mod</span> }
+
+  <span class="ruby-node">%w[site page paginator]</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">value</span> = <span class="ruby-identifier">payload</span>[<span class="ruby-identifier">key</span>] <span class="ruby-keyword">or</span> <span class="ruby-keyword">next</span>
+    <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{key}&quot;</span>, <span class="ruby-constant">OpenStruct</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">value</span>))
+  }
+
+  <span class="ruby-ivar">@renderer</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">renderer</span> <span class="ruby-operator">||</span>
+    (<span class="ruby-constant">Object</span>.<span class="ruby-identifier">const_defined?</span>(<span class="ruby-value">:Erubis</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">Erubis</span><span class="ruby-operator">::</span><span class="ruby-constant">FastEruby</span> <span class="ruby-operator">:</span> <span class="ruby-constant">ERB</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-_render" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">_render</span><span
+            class="method-args">(doc, binding, args = [])</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="_render-source">
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 197</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">_render</span>(<span class="ruby-identifier">doc</span>, <span class="ruby-identifier">binding</span>, <span class="ruby-identifier">args</span> = [])
+  <span class="ruby-identifier">renderer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">doc</span>, *<span class="ruby-identifier">args</span>).<span class="ruby-identifier">result</span>(<span class="ruby-identifier">binding</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- _render-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- _render-method -->
+
+    
+      <div id="method-i-_render_erb" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">_render_erb</span><span
+            class="method-args">(doc, binding, args = Rendering::ERB_OPTIONS)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="_render_erb-source">
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 192</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">_render_erb</span>(<span class="ruby-identifier">doc</span>, <span class="ruby-identifier">binding</span>, <span class="ruby-identifier">args</span> = <span class="ruby-constant">Rendering</span><span class="ruby-operator">::</span><span class="ruby-constant">ERB_OPTIONS</span>)
+  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">renderer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">doc</span>, *<span class="ruby-identifier">args</span>).<span class="ruby-identifier">result</span>(<span class="ruby-identifier">binding</span>)
+  <span class="ruby-identifier">encoding</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-identifier">encoding</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- _render_erb-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- _render_erb-method -->
+
+    
+      <div id="method-i-render" class="method-detail ">
+        
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            render &rarr; aString
+          </span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            render(content) &rarr; aString
+          </span>
+          
+        </div>
+        
+        <div class="method-heading">
+          <span class="method-callseq">
+            render(content, local_assigns) &rarr; aString
+          </span>
+          
+        </div>
+        
+        
+
+        <div class="method-description">
+          
+          <p>Renders the <code>content</code> as ERB template. Assigns optional
+<code>local_assigns</code> for use in template if provided.</p>
+          
+
+          
+          <div class="method-source-code" id="render-source">
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 181</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">content</span> = <span class="ruby-identifier">content</span>, <span class="ruby-identifier">local_assigns</span> = {}, *<span class="ruby-identifier">args</span>)
+  <span class="ruby-identifier">assigns</span> = <span class="ruby-string">'&lt;% '</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">local_assigns</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>
+    <span class="ruby-node">&quot;#{var} = local_assigns[#{var.inspect}]&quot;</span>
+  }.<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;\n&quot;</span>) <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">&quot; %&gt;\n&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">local_assigns</span>.<span class="ruby-identifier">empty?</span>
+
+  <span class="ruby-identifier">args</span>.<span class="ruby-identifier">insert</span>(<span class="ruby-value">0</span>, <span class="ruby-node">&quot;#{assigns}#{content}&quot;</span>, <span class="ruby-identifier">binding</span>)
+  <span class="ruby-identifier">renderer</span> <span class="ruby-operator">==</span> <span class="ruby-constant">ERB</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">_render_erb</span>(*<span class="ruby-identifier">args</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">_render</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err</span>
+  <span class="ruby-identifier">render_error</span>(<span class="ruby-identifier">err</span>, <span class="ruby-identifier">renderer</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- render-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- render-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
