@@ -144,10 +144,21 @@ module Jekyll
 
       class << self; attr_accessor :renderer; end
 
-      attr_reader :site, :page, :renderer
+      attr_reader :site, :page, :renderer, :encoding
 
       def initialize(*args)
         super
+
+        if ''.respond_to?(:force_encoding)
+          @encoding = site.respond_to?(:encoding) &&
+            site.encoding || Encoding.default_external
+
+          data.each_value { |val|
+            if val.respond_to?(:force_encoding) && !val.frozen?
+              val.force_encoding(encoding)
+            end
+          }
+        end
 
         [Helpers, *info[:filters]].each { |mod| extend mod }
 
@@ -179,7 +190,8 @@ module Jekyll
       end
 
       def _render_erb(doc, binding, args = Rendering::ERB_OPTIONS)
-        renderer.new(doc, *args).result(binding)
+        res = renderer.new(doc, *args).result(binding)
+        encoding ? res.force_encoding(encoding) : res
       end
 
       def _render(doc, binding, args = [])
