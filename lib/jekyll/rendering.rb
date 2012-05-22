@@ -3,7 +3,7 @@
 #                                                                             #
 # jekyll-rendering -- Jekyll plugin to provide alternative rendering engines  #
 #                                                                             #
-# Copyright (C) 2010-2011 University of Cologne,                              #
+# Copyright (C) 2010-2012 University of Cologne,                              #
 #                         Albertus-Magnus-Platz,                              #
 #                         50923 Cologne, Germany                              #
 #                                                                             #
@@ -28,6 +28,11 @@
 
 require 'erb'
 require 'ostruct'
+
+begin
+  require 'erubis'
+rescue LoadError
+end
 
 module Jekyll
 
@@ -111,8 +116,9 @@ module Jekyll
         raise NotImplementedError
       end
 
-      def render_error(err)
+      def render_error(err, renderer = nil)
         name = self.class.name.split('::').last
+        name << " [#{renderer}]" if renderer
         warn "#{name} Exception: #{err} (in #{data['layout'] || '(top)'})"
       end
 
@@ -136,7 +142,9 @@ module Jekyll
 
     class Erb < Base
 
-      attr_reader :site, :page
+      class << self; attr_accessor :renderer; end
+
+      attr_reader :site, :page, :renderer
 
       def initialize(*args)
         super
@@ -147,6 +155,9 @@ module Jekyll
           value = payload[key] or next
           instance_variable_set("@#{key}", OpenStruct.new(value))
         }
+
+        @renderer = self.class.renderer ||
+          (Object.const_defined?(:Erubis) ? Erubis::FastEruby : ERB)
       end
 
       # call-seq:
@@ -156,14 +167,23 @@ module Jekyll
       #
       # Renders the +content+ as ERB template. Assigns optional
       # +local_assigns+ for use in template if provided.
-      def render(content = content, local_assigns = {})
+      def render(content = content, local_assigns = {}, *args)
         assigns = '<% ' << local_assigns.keys.map { |var|
           "#{var} = local_assigns[#{var.inspect}]"
         }.join("\n") << " %>\n" unless local_assigns.empty?
 
-        ERB.new("#{assigns}#{content}", *Rendering::ERB_OPTIONS).result(binding)
+        args.insert(0, "#{assigns}#{content}", binding)
+        renderer == ERB ? _render_erb(*args) : _render(*args)
       rescue => err
-        render_error(err)
+        render_error(err, renderer)
+      end
+
+      def _render_erb(doc, binding, args = Rendering::ERB_OPTIONS)
+        renderer.new(doc, *args).result(binding)
+      end
+
+      def _render(doc, binding, args = [])
+        renderer.new(doc, *args).result(binding)
       end
 
       module Helpers
