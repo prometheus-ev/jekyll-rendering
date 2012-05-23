@@ -41,6 +41,8 @@ module Jekyll
     # Options passed to ERB.new: +safe_level+, +trim_mode+, +eoutvar+.
     ERB_OPTIONS = [nil, nil, '_erbout' ]
 
+    ERROR_TRACE = 3
+
   end
 
   module Convertible
@@ -116,10 +118,16 @@ module Jekyll
         raise NotImplementedError
       end
 
-      def render_error(err, renderer = nil)
-        name = self.class.name.split('::').last
-        name << " [#{renderer}]" if renderer
-        warn "#{name} Exception: #{err} (in #{data['layout'] || '(top)'})"
+      def render_error(err, renderer = nil, trace = Rendering::ERROR_TRACE)
+        msg = [self.class.name.split('::').last]
+        msg << "[#{renderer}]" if renderer
+
+        msg << 'Exception:' << err
+        msg << "(in #{data['layout'] || '(top)'})"
+
+        msg << "(from #{err.backtrace[0, trace].join(', ')})" if trace > 0
+
+        msg.join(' ')
       end
 
     end
