@@ -150,6 +150,17 @@ module Jekyll
 
     class Erb < Base
 
+      class LazyStruct < OpenStruct
+
+        def initialize(hash)
+          @table = Hash.new { |h, k|
+            new_ostruct_member(k)
+            h[k] = h.has_key?(s = k.to_s) ? h[s] : nil
+          }.update(hash)
+        end
+
+      end
+
       class << self; attr_accessor :renderer; end
 
       attr_reader :site, :page, :renderer, :encoding
@@ -172,7 +183,7 @@ module Jekyll
 
         %w[site page paginator].each { |key|
           value = payload[key] or next
-          instance_variable_set("@#{key}", OpenStruct.new(value))
+          instance_variable_set("@#{key}", LazyStruct.new(value))
         }
 
         @renderer = self.class.renderer ||
