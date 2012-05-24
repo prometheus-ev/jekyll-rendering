@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Jekyll::Engine::Liquid - jekyll-rendering Application documentation (v0.0.8)</title>
+<title>class Jekyll::Engine::Liquid - jekyll-rendering Application documentation (v0.0.9)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -109,6 +109,8 @@
   
     <li><a href="../../Jekyll/Engine/Erb/Helpers.html">Jekyll::Engine::Erb::Helpers</a>
   
+    <li><a href="../../Jekyll/Engine/Erb/LazyStruct.html">Jekyll::Engine::Erb::LazyStruct</a>
+  
     <li><a href="../../Jekyll/Engine/Liquid.html">Jekyll::Engine::Liquid</a>
   
     <li><a href="../../Jekyll/Rendering.html">Jekyll::Rendering</a>
@@ -176,7 +178,7 @@ calling ::Liquid::Template#render with <code>payload</code> and
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 135</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 143</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">content</span> = <span class="ruby-identifier">content</span>)
   <span class="ruby-operator">::</span><span class="ruby-constant">Liquid</span><span class="ruby-operator">::</span><span class="ruby-constant">Template</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">content</span>).<span class="ruby-identifier">render</span>(<span class="ruby-identifier">payload</span>, <span class="ruby-identifier">info</span>)
 <span class="ruby-keyword">rescue</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">err</span>

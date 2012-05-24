@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Jekyll::Engine::Erb - jekyll-rendering Application documentation (v0.0.8)</title>
+<title>class Jekyll::Engine::Erb - jekyll-rendering Application documentation (v0.0.9)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -114,6 +114,8 @@
     <li><a href="../../Jekyll/Engine/Erb.html">Jekyll::Engine::Erb</a>
   
     <li><a href="../../Jekyll/Engine/Erb/Helpers.html">Jekyll::Engine::Erb::Helpers</a>
+  
+    <li><a href="../../Jekyll/Engine/Erb/LazyStruct.html">Jekyll::Engine::Erb::LazyStruct</a>
   
     <li><a href="../../Jekyll/Engine/Liquid.html">Jekyll::Engine::Liquid</a>
   
@@ -240,7 +242,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 149</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 168</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">args</span>)
   <span class="ruby-keyword">super</span>
 
@@ -259,7 +261,7 @@
 
   <span class="ruby-node">%w[site page paginator]</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">value</span> = <span class="ruby-identifier">payload</span>[<span class="ruby-identifier">key</span>] <span class="ruby-keyword">or</span> <span class="ruby-keyword">next</span>
-    <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{key}&quot;</span>, <span class="ruby-constant">OpenStruct</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">value</span>))
+    <span class="ruby-identifier">instance_variable_set</span>(<span class="ruby-node">&quot;@#{key}&quot;</span>, <span class="ruby-constant">LazyStruct</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">value</span>))
   }
 
   <span class="ruby-ivar">@renderer</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">renderer</span> <span class="ruby-operator">||</span>
@@ -297,7 +299,7 @@
 
           
           <div class="method-source-code" id="_render-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 197</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 216</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">_render</span>(<span class="ruby-identifier">doc</span>, <span class="ruby-identifier">binding</span>, <span class="ruby-identifier">args</span> = [])
   <span class="ruby-identifier">renderer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">doc</span>, *<span class="ruby-identifier">args</span>).<span class="ruby-identifier">result</span>(<span class="ruby-identifier">binding</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -327,7 +329,7 @@
 
           
           <div class="method-source-code" id="_render_erb-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 192</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 211</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">_render_erb</span>(<span class="ruby-identifier">doc</span>, <span class="ruby-identifier">binding</span>, <span class="ruby-identifier">args</span> = <span class="ruby-constant">Rendering</span><span class="ruby-operator">::</span><span class="ruby-constant">ERB_OPTIONS</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">renderer</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">doc</span>, *<span class="ruby-identifier">args</span>).<span class="ruby-identifier">result</span>(<span class="ruby-identifier">binding</span>)
   <span class="ruby-identifier">encoding</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">force_encoding</span>(<span class="ruby-identifier">encoding</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">res</span>
@@ -378,7 +380,7 @@
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 181</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 200</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">content</span> = <span class="ruby-identifier">content</span>, <span class="ruby-identifier">local_assigns</span> = {}, *<span class="ruby-identifier">args</span>)
   <span class="ruby-identifier">assigns</span> = <span class="ruby-string">'&lt;% '</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">local_assigns</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">map</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">var</span><span class="ruby-operator">|</span>
     <span class="ruby-node">&quot;#{var} = local_assigns[#{var.inspect}]&quot;</span>

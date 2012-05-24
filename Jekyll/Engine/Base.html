@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class Jekyll::Engine::Base - jekyll-rendering Application documentation (v0.0.8)</title>
+<title>class Jekyll::Engine::Base - jekyll-rendering Application documentation (v0.0.9)</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -114,6 +114,8 @@
     <li><a href="../../Jekyll/Engine/Erb.html">Jekyll::Engine::Erb</a>
   
     <li><a href="../../Jekyll/Engine/Erb/Helpers.html">Jekyll::Engine::Erb::Helpers</a>
+  
+    <li><a href="../../Jekyll/Engine/Erb/LazyStruct.html">Jekyll::Engine::Erb::LazyStruct</a>
   
     <li><a href="../../Jekyll/Engine/Liquid.html">Jekyll::Engine::Liquid</a>
   
@@ -227,7 +229,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 107</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 109</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">payload</span>, <span class="ruby-identifier">content</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">info</span> = {}, <span class="ruby-identifier">data</span> = {})
   <span class="ruby-ivar">@payload</span>, <span class="ruby-ivar">@content</span>, <span class="ruby-ivar">@info</span>, <span class="ruby-ivar">@data</span> = <span class="ruby-identifier">payload</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">info</span>, <span class="ruby-identifier">data</span>
 <span class="ruby-keyword">end</span></pre>
@@ -262,7 +264,7 @@
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 100</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">payload</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">info</span>, <span class="ruby-identifier">data</span> = {}, <span class="ruby-identifier">layout</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-identifier">new</span>(<span class="ruby-identifier">payload</span>, <span class="ruby-identifier">content</span>, <span class="ruby-identifier">info</span>, <span class="ruby-identifier">data</span>).<span class="ruby-identifier">render</span>(<span class="ruby-identifier">layout</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">content</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -303,7 +305,7 @@
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 115</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 117</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">NotImplementedError</span>
 <span class="ruby-keyword">end</span></pre>
@@ -321,7 +323,7 @@
         
         <div class="method-heading">
           <span class="method-name">render_error</span><span
-            class="method-args">(err, renderer = nil)</span>
+            class="method-args">(err, renderer = nil, trace = Rendering::ERROR_TRACE)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -333,11 +335,17 @@
 
           
           <div class="method-source-code" id="render_error-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 119</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">render_error</span>(<span class="ruby-identifier">err</span>, <span class="ruby-identifier">renderer</span> = <span class="ruby-keyword">nil</span>)
-  <span class="ruby-identifier">name</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'::'</span>).<span class="ruby-identifier">last</span>
-  <span class="ruby-identifier">name</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot; [#{renderer}]&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">renderer</span>
-  <span class="ruby-identifier">warn</span> <span class="ruby-node">&quot;#{name} Exception: #{err} (in #{data['layout'] || '(top)'})&quot;</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 121</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">render_error</span>(<span class="ruby-identifier">err</span>, <span class="ruby-identifier">renderer</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">trace</span> = <span class="ruby-constant">Rendering</span><span class="ruby-operator">::</span><span class="ruby-constant">ERROR_TRACE</span>)
+  <span class="ruby-identifier">msg</span> = [<span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">'::'</span>).<span class="ruby-identifier">last</span>]
+  <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;[#{renderer}]&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">renderer</span>
+
+  <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-string">'Exception:'</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">err</span>
+  <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;(in #{data['layout'] || '(top)'})&quot;</span>
+
+  <span class="ruby-identifier">msg</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;(from #{err.backtrace[0, trace].join(', ')})&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">trace</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+
+  <span class="ruby-identifier">msg</span>.<span class="ruby-identifier">join</span>(<span class="ruby-string">' '</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- render_error-source -->
           

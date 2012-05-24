@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Jekyll::Engine::Erb::Helpers - jekyll-rendering Application documentation (v0.0.8)</title>
+<title>module Jekyll::Engine::Erb::Helpers - jekyll-rendering Application documentation (v0.0.9)</title>
 
 <link type="text/css" media="screen" href="../../../rdoc.css" rel="stylesheet">
 
@@ -123,6 +123,8 @@
   
     <li><a href="../../../Jekyll/Engine/Erb/Helpers.html">Jekyll::Engine::Erb::Helpers</a>
   
+    <li><a href="../../../Jekyll/Engine/Erb/LazyStruct.html">Jekyll::Engine::Erb::LazyStruct</a>
+  
     <li><a href="../../../Jekyll/Engine/Liquid.html">Jekyll::Engine::Liquid</a>
   
     <li><a href="../../../Jekyll/Rendering.html">Jekyll::Rendering</a>
@@ -189,7 +191,7 @@ Ruby).</p>
 
           
           <div class="method-source-code" id="highlight-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 231</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 250</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">highlight</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">lang</span> = <span class="ruby-value">:ruby</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">site</span>.<span class="ruby-identifier">pygments</span>
     <span class="ruby-identifier">render_pygments</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">lang</span>)
@@ -238,7 +240,7 @@ render.</p>
 
           
           <div class="method-source-code" id="include_file-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 212</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 231</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">include_file</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">local_assigns</span> = {})
   <span class="ruby-ivar">@templates</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>, <span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">k</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">k</span>)
@@ -284,7 +286,7 @@ render.</p>
 
           
           <div class="method-source-code" id="add_code_tags-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 257</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 276</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_code_tags</span>(<span class="ruby-identifier">code</span>, <span class="ruby-identifier">lang</span>)
   <span class="ruby-comment"># Add nested &lt;code&gt; tags to code blocks</span>
   <span class="ruby-identifier">code</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">%r{&lt;pre&gt;}</span>,  <span class="ruby-node">%Q{&lt;pre&gt;&lt;code class=&quot;#{lang}&quot;&gt;}</span>).
@@ -316,7 +318,7 @@ render.</p>
 
           
           <div class="method-source-code" id="render_codehighlighter-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 246</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 265</span>
         <span class="ruby-keyword">def</span> <span class="ruby-identifier">render_codehighlighter</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">lang</span>)
           <span class="ruby-comment">#The div is required because RDiscount blows ass</span>
           <span class="ruby-string">&quot;  &lt;div&gt;
@@ -352,7 +354,7 @@ render.</p>
 
           
           <div class="method-source-code" id="render_pygments-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 241</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 260</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render_pygments</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">lang</span>)
   <span class="ruby-identifier">output</span> = <span class="ruby-identifier">add_code_tags</span>(<span class="ruby-constant">Albino</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">lang</span>).<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">lang</span>)
   <span class="ruby-node">&quot;#{payload['pygments_prefix']}#{output}#{payload['pygments_suffix']}&quot;</span>
