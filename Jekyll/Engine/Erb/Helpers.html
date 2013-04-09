@@ -43,6 +43,8 @@
 </nav>
 
 
+  
+
   <div id="file-metadata">
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
@@ -70,21 +72,22 @@
   </ul>
 </nav>
 
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-i-add_code_tags">#add_code_tags</a>
+    <li ><a href="#method-i-add_code_tags">#add_code_tags</a>
     
-    <li><a href="#method-i-highlight">#highlight</a>
+    <li ><a href="#method-i-highlight">#highlight</a>
     
-    <li><a href="#method-i-include_file">#include_file</a>
+    <li ><a href="#method-i-include_file">#include_file</a>
     
-    <li><a href="#method-i-render_codehighlighter">#render_codehighlighter</a>
+    <li ><a href="#method-i-render_codehighlighter">#render_codehighlighter</a>
     
-    <li><a href="#method-i-render_pygments">#render_pygments</a>
+    <li ><a href="#method-i-render_pygments">#render_pygments</a>
     
   </ul>
 </nav>
@@ -188,10 +191,11 @@
           <p>Highlights <code>text</code> according to <code>lang</code> (defaults to
 Ruby).</p>
           
+          
 
           
           <div class="method-source-code" id="highlight-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 250</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 252</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">highlight</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">lang</span> = <span class="ruby-value">:ruby</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">site</span>.<span class="ruby-identifier">pygments</span>
     <span class="ruby-identifier">render_pygments</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">lang</span>)
@@ -237,21 +241,22 @@ current directory if <code>file</code> starts with <code>./</code>,
 rendered as ERB template. Passes optional <code>local_assigns</code> on to
 render.</p>
           
+          
 
           
           <div class="method-source-code" id="include_file-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 231</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 233</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">include_file</span>(<span class="ruby-identifier">file</span>, <span class="ruby-identifier">local_assigns</span> = {})
   <span class="ruby-ivar">@templates</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">h</span>, <span class="ruby-identifier">k</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">k</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">k</span>)
   }
 
-  <span class="ruby-identifier">dir</span> = <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">%r\A\.\//</span> <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">url</span>) <span class="ruby-operator">:</span> <span class="ruby-string">'_includes'</span>
+  <span class="ruby-identifier">dir</span> = <span class="ruby-identifier">file</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/\A\.\//</span> <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">page</span>.<span class="ruby-identifier">url</span>) <span class="ruby-operator">:</span> <span class="ruby-string">&#39;_includes&#39;</span>
 
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">template</span> = <span class="ruby-ivar">@templates</span>[<span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-identifier">site</span>.<span class="ruby-identifier">source</span>, <span class="ruby-identifier">dir</span>, <span class="ruby-identifier">file</span>)]
     <span class="ruby-identifier">render</span>(<span class="ruby-identifier">template</span>, <span class="ruby-identifier">local_assigns</span>)
   <span class="ruby-keyword">else</span>
-    <span class="ruby-node">&quot;[Included file `#{file}' not found in `#{dir}'.]&quot;</span>
+    <span class="ruby-node">&quot;[Included file `#{file}&#39; not found in `#{dir}&#39;.]&quot;</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- include_file-source -->
@@ -275,7 +280,9 @@ render.</p>
         <div class="method-heading">
           <span class="method-name">add_code_tags</span><span
             class="method-args">(code, lang)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -283,10 +290,11 @@ render.</p>
           
           
           
+          
 
           
           <div class="method-source-code" id="add_code_tags-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 276</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 278</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">add_code_tags</span>(<span class="ruby-identifier">code</span>, <span class="ruby-identifier">lang</span>)
   <span class="ruby-comment"># Add nested &lt;code&gt; tags to code blocks</span>
   <span class="ruby-identifier">code</span>.<span class="ruby-identifier">sub</span>(<span class="ruby-regexp">%r{&lt;pre&gt;}</span>,  <span class="ruby-node">%Q{&lt;pre&gt;&lt;code class=&quot;#{lang}&quot;&gt;}</span>).
@@ -307,7 +315,9 @@ render.</p>
         <div class="method-heading">
           <span class="method-name">render_codehighlighter</span><span
             class="method-args">(text, lang)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -315,19 +325,21 @@ render.</p>
           
           
           
+          
 
           
           <div class="method-source-code" id="render_codehighlighter-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 265</span>
-        <span class="ruby-keyword">def</span> <span class="ruby-identifier">render_codehighlighter</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">lang</span>)
-          <span class="ruby-comment">#The div is required because RDiscount blows ass</span>
-          <span class="ruby-string">&quot;  &lt;div&gt;
-    &lt;pre&gt;
-      &lt;code class=&quot;#{lang}&quot;&gt;#{h(text).strip}&lt;/code&gt;
-    &lt;/pre&gt;
-  &lt;/div&gt;
-&quot;</span>
-        <span class="ruby-keyword">end</span></pre>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 267</span>
+      <span class="ruby-keyword">def</span> <span class="ruby-identifier">render_codehighlighter</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">lang</span>)
+        <span class="ruby-comment">#The div is required because RDiscount blows ass</span>
+        <span class="ruby-value">&lt;&lt;-HTML
+&lt;div&gt;
+  &lt;pre&gt;
+    &lt;code class=&quot;#{lang}&quot;&gt;#{h(text).strip}&lt;/code&gt;
+  &lt;/pre&gt;
+&lt;/div&gt;
+        HTML</span>
+      <span class="ruby-keyword">end</span></pre>
           </div><!-- render_codehighlighter-source -->
           
         </div>
@@ -343,7 +355,9 @@ render.</p>
         <div class="method-heading">
           <span class="method-name">render_pygments</span><span
             class="method-args">(text, lang)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -351,13 +365,14 @@ render.</p>
           
           
           
+          
 
           
           <div class="method-source-code" id="render_pygments-source">
-            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 260</span>
+            <pre><span class="ruby-comment"># File lib/jekyll/rendering.rb, line 262</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render_pygments</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">lang</span>)
   <span class="ruby-identifier">output</span> = <span class="ruby-identifier">add_code_tags</span>(<span class="ruby-constant">Albino</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">text</span>, <span class="ruby-identifier">lang</span>).<span class="ruby-identifier">to_s</span>, <span class="ruby-identifier">lang</span>)
-  <span class="ruby-node">&quot;#{payload['pygments_prefix']}#{output}#{payload['pygments_suffix']}&quot;</span>
+  <span class="ruby-node">&quot;#{payload[&#39;pygments_prefix&#39;]}#{output}#{payload[&#39;pygments_suffix&#39;]}&quot;</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- render_pygments-source -->
           
@@ -378,7 +393,7 @@ render.</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

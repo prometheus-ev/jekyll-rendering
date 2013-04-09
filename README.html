@@ -43,6 +43,24 @@
 </nav>
 
 
+  
+<div id="table-of-contents">
+  <nav class="section">
+    <h3 class="section-header">Table of Contents</h3>
+    <ul>
+      <li><a href="#label-jekyll-rendering+-+Jekyll+plugin+to+provide+alternative+rendering+engines.">jekyll-rendering - Jekyll plugin to provide alternative rendering engines.</a>
+      <li><a href="#label-VERSION">VERSION</a>
+      <li><a href="#label-DESCRIPTION">DESCRIPTION</a>
+      <li><a href="#label-TODO">TODO</a>
+      <li><a href="#label-LINKS">LINKS</a>
+      <li><a href="#label-AUTHORS">AUTHORS</a>
+      <li><a href="#label-CREDITS">CREDITS</a>
+      <li><a href="#label-LICENSE+AND+COPYRIGHT">LICENSE AND COPYRIGHT</a>
+    </ul>
+  </nav>
+</div>
+
+
   <div id="project-metadata">
     <nav id="fileindex-section" class="section project-section">
   <h3 class="section-header">Pages</h3>
@@ -91,20 +109,20 @@
 
 <div id="documentation" class="description">
   
-<h1 id="label-jekyll-rendering+-+Jekyll+plugin+to+provide+alternative+rendering+engines.">jekyll-rendering - <a href="Jekyll.html">Jekyll</a> plugin to provide alternative rendering engines.</h1>
+<h1 id="label-jekyll-rendering+-+Jekyll+plugin+to+provide+alternative+rendering+engines.">jekyll-rendering - <a href="Jekyll.html">Jekyll</a> plugin to provide alternative rendering engines.<span><a href="#label-jekyll-rendering+-+Jekyll+plugin+to+provide+alternative+rendering+engines.">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
 
-<h2 id="label-VERSION">VERSION</h2>
+<h2 id="label-VERSION">VERSION<span><a href="#label-VERSION">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>This documentation refers to jekyll-rendering version 0.0.9</p>
 
-<h2 id="label-DESCRIPTION">DESCRIPTION</h2>
+<h2 id="label-DESCRIPTION">DESCRIPTION<span><a href="#label-DESCRIPTION">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p><a href="Jekyll.html">Jekyll</a> plugin to provide alternative rendering
 engines.</p>
 
 <p>Add the following to your <code>_plugins/ext.rb</code> file:</p>
 
-<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">'jekyll/rendering'</span>
+<pre class="ruby"><span class="ruby-identifier">require</span> <span class="ruby-string">&#39;jekyll/rendering&#39;</span>
 </pre>
 
 <p>Then set <code>engine</code> in your <code>_config.yml</code>. The default
@@ -114,19 +132,19 @@ engine is <code>liquid</code>.</p>
 <code>Jekyll::Rendering::ERB_OPTIONS</code>. Modify this array if you want
 to change defaults.</p>
 
-<h2 id="label-TODO">TODO</h2>
+<h2 id="label-TODO">TODO<span><a href="#label-TODO">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 <ul><li>
 <p>Automatic engine detection by file extension?
 (<code>&lt;NAME&gt;.&lt;FORMAT&gt;.&lt;ENGINE&gt;</code>)</p>
 </li></ul>
 
-<h2 id="label-LINKS">LINKS</h2>
+<h2 id="label-LINKS">LINKS<span><a href="#label-LINKS">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p></p>
 <dl class="rdoc-list note-list"><dt>Documentation
 <dd>
 <p><a
-href="http://rdoc.info/projects/blackwinter/jekyll-rendering">rdoc.info/projects/blackwinter/jekyll-rendering</a></p>
+href="http://blackwinter.github.com/jekyll-rendering">blackwinter.github.com/jekyll-rendering</a></p>
 </dd><dt>Source code
 <dd>
 <p><a
@@ -137,23 +155,25 @@ href="http://github.com/blackwinter/jekyll-rendering">github.com/blackwinter/jek
 href="http://rubygems.org/gems/jekyll-rendering">rubygems.org/gems/jekyll-rendering</a></p>
 </dd></dl>
 
-<h2 id="label-AUTHORS">AUTHORS</h2>
+<h2 id="label-AUTHORS">AUTHORS<span><a href="#label-AUTHORS">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 <ul><li>
 <p>Jens Wille &lt;<a
-href="mailto:jens.wille@uni-koeln.de">jens.wille@uni-koeln.de</a>&gt;</p>
+href="mailto:jens.wille@gmail.com">jens.wille@gmail.com</a>&gt;</p>
 </li></ul>
 
-<h2 id="label-CREDITS">CREDITS</h2>
+<h2 id="label-CREDITS">CREDITS<span><a href="#label-CREDITS">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 <ul><li>
 <p>Arne Eilermann &lt;<a
-href="mailto:arne.eilermann@uni-koeln.de">arne.eilermann@uni-koeln.de</a>&gt;
-for the original idea and implementation.</p>
+href="mailto:eilermann@lavabit.com">eilermann@lavabit.com</a>&gt; for the
+original idea and implementation.</p>
 </li></ul>
 
-<h2 id="label-LICENSE+AND+COPYRIGHT">LICENSE AND COPYRIGHT</h2>
+<h2 id="label-LICENSE+AND+COPYRIGHT">LICENSE AND COPYRIGHT<span><a href="#label-LICENSE+AND+COPYRIGHT">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>Copyright (C) 2010-2012 University of Cologne, Albertus-Magnus-Platz, 50923
 Cologne, Germany</p>
+
+<p>Copyright (C) 2013 Jens Wille</p>
 
 <p>jekyll-rendering is free software: you can redistribute it and/or modify it
 under the terms of the GNU Affero General Public License as published by
@@ -167,7 +187,7 @@ License for more details.</p>
 
 <p>You should have received a copy of the GNU Affero General Public License
 along with jekyll-rendering. If not, see &lt;<a
-href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
+href="http://www.gnu.org/licenses">www.gnu.org/licenses</a>/&gt;.</p>
 
 </div>
 
@@ -175,7 +195,7 @@ href="http://www.gnu.org/licenses/">www.gnu.org/licenses/</a>&gt;.</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 
