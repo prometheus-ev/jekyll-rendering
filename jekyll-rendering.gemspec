@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.authors = ["Jens Wille"]
   s.date = "2012-05-24"
   s.description = "Jekyll plugin to provide alternative rendering engines."
-  s.email = "jens.wille@uni-koeln.de"
+  s.email = "jens.wille@gmail.com"
   s.extra_rdoc_files = ["README", "COPYING", "ChangeLog"]
   s.files = ["lib/jekyll/rendering/version.rb", "lib/jekyll/rendering.rb", "COPYING", "ChangeLog", "Rakefile", "README"]
   s.rdoc_options = ["--charset", "UTF-8", "--line-numbers", "--all", "--title", "jekyll-rendering Application documentation (v0.0.9)", "--main", "README"]
