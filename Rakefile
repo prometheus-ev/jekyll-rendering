@@ -10,6 +10,7 @@ begin
       :summary      => %q{Jekyll plugin to provide alternative rendering engines.},
       :author       => %q{Jens Wille},
       :email        => %q{jens.wille@gmail.com},
+      :license      => %q{AGPL},
       :homepage     => :blackwinter,
       :dependencies => %w[]
     }
@@ -20,6 +21,6 @@ end
 
 begin
   require 'jekyll/testtasks/rake'
-rescue LoadError
-  warn "Please install the `jekyll-testtasks' gem."
+rescue LoadError => err
+  warn "Please install the `jekyll-testtasks' gem. (#{err})"
 end
