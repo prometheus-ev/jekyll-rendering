@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.email = "jens.wille@gmail.com"
   s.extra_rdoc_files = ["README", "COPYING", "ChangeLog"]
   s.files = ["lib/jekyll/rendering.rb", "lib/jekyll/rendering/version.rb", "COPYING", "ChangeLog", "README", "Rakefile"]
-  s.homepage = "http://github.com/blackwinter/jekyll-rendering"
+  s.homepage = "http://github.com/prometheus-ev/jekyll-rendering"
   s.licenses = ["AGPL"]
   s.rdoc_options = ["--charset", "UTF-8", "--line-numbers", "--all", "--title", "jekyll-rendering Application documentation (v0.0.9)", "--main", "README"]
   s.require_paths = ["lib"]
