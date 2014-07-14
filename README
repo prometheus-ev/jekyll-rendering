@@ -27,8 +27,8 @@ Modify this array if you want to change defaults.
 == LINKS
 
 <b></b>
-Documentation:: http://blackwinter.github.com/jekyll-rendering
-Source code::   http://github.com/blackwinter/jekyll-rendering
+Documentation:: http://rdoc.info/gems/jekyll-rendering
+Source code::   http://github.com/prometheus-ev/jekyll-rendering
 RubyGem::       http://rubygems.org/gems/jekyll-rendering
 
 
