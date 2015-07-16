@@ -1,49 +1,51 @@
-= jekyll-rendering - Jekyll plugin to provide alternative rendering engines.
+jekyll-rendering
+----------------
+Jekyll plugin to provide alternative rendering engines.
 
-== VERSION
+
+## VERSION
 
 This documentation refers to jekyll-rendering version 0.0.9
 
 
-== DESCRIPTION
+## DESCRIPTION
 
 Jekyll plugin to provide alternative rendering engines.
 
-Add the following to your <tt>_plugins/ext.rb</tt> file:
+Add the following to your `_plugins/ext.rb` file:
 
-  require 'jekyll/rendering'
+    require 'jekyll/rendering'
 
-Then set +engine+ in your <tt>_config.yml</tt>. The default engine is +liquid+.
+Then set `engine` in your `_config.yml`. The default engine is `liquid`.
 
-Options passed to ERB.new are taken from <tt>Jekyll::Rendering::ERB_OPTIONS</tt>.
+Options passed to ERB.new are taken from `Jekyll::Rendering::ERB_OPTIONS`.
 Modify this array if you want to change defaults.
 
 
-== TODO
+## TODO
 
-* Automatic engine detection by file extension? (<tt><NAME>.<FORMAT>.<ENGINE></tt>)
-
-
-== LINKS
-
-<b></b>
-Documentation:: http://rdoc.info/gems/jekyll-rendering
-Source code::   http://github.com/prometheus-ev/jekyll-rendering
-RubyGem::       http://rubygems.org/gems/jekyll-rendering
+* Automatic engine detection by file extension? (`<NAME>.<FORMAT>.<ENGINE>`)
 
 
-== AUTHORS
+## LINKS
+
+* Documentation :: http://rdoc.info/gems/jekyll-rendering
+* Source code ::   http://github.com/prometheus-ev/jekyll-rendering
+* RubyGem ::       http://rubygems.org/gems/jekyll-rendering
+
+
+## AUTHORS
 
 * Jens Wille <mailto:jens.wille@gmail.com>
 
 
-== CREDITS
+## CREDITS
 
 * Arne Eilermann <mailto:eilermann@lavabit.com> for the original idea
   and implementation.
 
 
-== LICENSE AND COPYRIGHT
+## LICENSE AND COPYRIGHT
 
 Copyright (C) 2010-2012 University of Cologne,
 Albertus-Magnus-Platz, 50923 Cologne, Germany
